@@ -36,7 +36,7 @@ const DataDashboard = () => {
             The Reality Behind the Mission
           </p>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed text-sm sm:text-base fade-in-up-delay-2">
-            These figures are based on national survey data and public reports. Behind every statistic is a human story — and a system that must change.
+            These figures are based on national survey data and public reports. Behind every statistic is a human story, and a system that must change.
           </p>
         </div>
       </section>
@@ -185,7 +185,7 @@ const DataDashboard = () => {
               Why This <span className="gradient-purple-text">Matters</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4">
-              Gender-based violence is not only a social issue — it is a public health, economic, and systemic crisis. The data reveals urgency. The solution requires innovation, community, and infrastructure.
+              Gender-based violence is not only a social issue. It is a public health, economic, and systemic crisis. The data reveals urgency. The solution requires innovation, community, and infrastructure.
             </p>
             <p className="text-foreground max-w-2xl mx-auto leading-relaxed font-medium mb-10">
               EveShield exists to bridge the gap between risk and response.
