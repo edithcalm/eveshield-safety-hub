@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
+import eveshieldLogo from "@/assets/eveshield-logo.png";
 
 const Footer = () => {
   return (
@@ -8,9 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <span className="text-xl font-display font-bold tracking-tight">
-              Eve<span className="gradient-purple-text">Shield</span>
-            </span>
+            <img src={eveshieldLogo} alt="EveShield" className="h-8 w-auto" />
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
               Building wearable emergency response technology for safety, dignity, and community.
             </p>

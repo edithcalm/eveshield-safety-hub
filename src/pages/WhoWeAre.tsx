@@ -1,6 +1,6 @@
 import { Shield, MapPin, Wifi, Users, Heart, Eye, Sparkles, ArrowRight } from "lucide-react";
-import braceletHero from "@/assets/bracelet-hero.png";
-import braceletSide from "@/assets/bracelet-side.png";
+import braceletDuo from "@/assets/bracelet-duo.png";
+import braceletSingle from "@/assets/bracelet-single.png";
 import SectionWrapper from "@/components/SectionWrapper";
 import { Link } from "react-router-dom";
 
@@ -108,8 +108,8 @@ const WhoWeAre = () => {
                 </div>
               </div>
               <div className="relative flex items-center justify-center">
-                <img src={braceletHero} alt="EveShield Safety Bracelet" className="w-72 sm:w-80 lg:w-96 float-animation drop-shadow-2xl" />
-                <img src={braceletSide} alt="EveShield Bracelet Side" className="absolute -bottom-6 -right-4 w-36 sm:w-44 float-animation-delayed drop-shadow-2xl opacity-60" />
+                <img src={braceletDuo} alt="EveShield Safety Bracelet" className="w-72 sm:w-80 lg:w-96 float-animation drop-shadow-2xl" />
+                <img src={braceletSingle} alt="EveShield Bracelet Side" className="absolute -bottom-6 -right-4 w-36 sm:w-44 float-animation-delayed drop-shadow-2xl opacity-60" />
               </div>
             </div>
           </div>
