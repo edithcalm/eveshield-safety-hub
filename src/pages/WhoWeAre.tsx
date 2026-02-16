@@ -92,7 +92,7 @@ const WhoWeAre = () => {
                   <span className="gradient-purple-text">Safety Bracelet</span>
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  EveShield is not just hardware — it is a community-powered response ecosystem. Our bracelet combines cutting-edge wearable technology with community infrastructure to create a comprehensive safety solution.
+                  EveShield is not just hardware. It is a community-powered response ecosystem. Our bracelet combines cutting-edge wearable technology with community infrastructure to create a comprehensive safety solution.
                 </p>
                 <div className="flex flex-col gap-3">
                   {productFeatures.map((f, i) => (

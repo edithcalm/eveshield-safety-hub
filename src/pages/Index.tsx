@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Shield, MapPin, Wifi, Users, ArrowRight } from "lucide-react";
 import braceletDuo from "@/assets/bracelet-duo.png";
 import braceletSingle from "@/assets/bracelet-single.png";
+import braceletThird from "@/assets/bracelet-third.png";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import SectionWrapper from "@/components/SectionWrapper";
 
@@ -29,7 +30,7 @@ const Index = () => {
                 <span className="gradient-purple-text">Conditional.</span>
               </h1>
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 fade-in-up-delay-1">
-                EveShield is building wearable emergency response technology designed to help women and vulnerable individuals access immediate support — even in low-connectivity environments.
+                EveShield is building wearable emergency response technology designed to help women and vulnerable individuals access immediate support, even in low-connectivity environments.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start fade-in-up-delay-2">
                 <Link
@@ -59,6 +60,12 @@ const Index = () => {
                 src={braceletSingle}
                 alt="EveShield Bracelet Side View"
                 className="absolute -bottom-4 -left-4 sm:left-0 w-32 sm:w-40 lg:w-48 float-animation-delayed drop-shadow-2xl opacity-70"
+              />
+              <img
+                src={braceletThird}
+                alt="EveShield Bracelet Pattern"
+                className="absolute -top-4 -right-4 sm:right-0 w-28 sm:w-36 lg:w-44 float-animation drop-shadow-2xl opacity-70"
+                style={{ animationDelay: "1s" }}
               />
             </div>
           </div>
@@ -106,7 +113,7 @@ const Index = () => {
                 A Wearable Safety <span className="gradient-purple-text">Ecosystem</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                More than a device — a connected infrastructure of safety, community, and emergency response designed for Kenya's realities.
+                More than a device, a connected infrastructure of safety, community, and emergency response designed for Kenya's realities.
               </p>
             </div>
 
