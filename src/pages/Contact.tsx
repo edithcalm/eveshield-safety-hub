@@ -18,7 +18,7 @@ const Contact = () => {
     setSubmitting(true);
     
     try {
-      const scriptUrl = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+      const scriptUrl = "https://script.google.com/macros/s/AKfycby9NnUgDmKaqIxLk3fEoJS3VyW9ysq10gSBzSxUiabj4BjyOG4T8pIp2J9bZAPn9n92IQ/exec";
       
       const formBody = new URLSearchParams();
       formBody.append("name", formData.name);
