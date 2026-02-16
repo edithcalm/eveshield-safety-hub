@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import eveshieldLogo from "@/assets/eveshield-logo.png";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -35,9 +36,7 @@ const Navbar = () => {
       <div className="container-narrow mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl sm:text-2xl font-display font-bold tracking-tight">
-              Eve<span className="gradient-purple-text">Shield</span>
-            </span>
+            <img src={eveshieldLogo} alt="EveShield" className="h-8 sm:h-10 w-auto" />
           </Link>
 
           {/* Desktop */}

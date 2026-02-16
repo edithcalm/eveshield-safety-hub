@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Shield, MapPin, Wifi, Users, ArrowRight } from "lucide-react";
-import braceletHero from "@/assets/bracelet-hero.png";
-import braceletSide from "@/assets/bracelet-side.png";
+import braceletDuo from "@/assets/bracelet-duo.png";
+import braceletSingle from "@/assets/bracelet-single.png";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import SectionWrapper from "@/components/SectionWrapper";
 
@@ -51,12 +51,12 @@ const Index = () => {
             {/* Bracelet images */}
             <div className="relative flex items-center justify-center fade-in-up-delay-2">
               <img
-                src={braceletHero}
+                src={braceletDuo}
                 alt="EveShield Safety Bracelet"
                 className="w-64 sm:w-80 lg:w-96 float-animation drop-shadow-2xl"
               />
               <img
-                src={braceletSide}
+                src={braceletSingle}
                 alt="EveShield Bracelet Side View"
                 className="absolute -bottom-4 -left-4 sm:left-0 w-32 sm:w-40 lg:w-48 float-animation-delayed drop-shadow-2xl opacity-70"
               />
