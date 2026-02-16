@@ -18,23 +18,25 @@ const Contact = () => {
     setSubmitting(true);
     
     try {
-      const scriptUrl = "https://script.google.com/macros/s/AKfycby9NnUgDmKaqIxLk3fEoJS3VyW9ysq10gSBzSxUiabj4BjyOG4T8pIp2J9bZAPn9n92IQ/exec";
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbzuEtJGjh7otAb-VNPaz6PwFKAcwCK2Hzg2deIPlsigZlhGZ5bVcGAvoGOOV9PPBWH-YA/exec";
       
-      const formBody = new URLSearchParams();
-      formBody.append("name", formData.name);
-      formBody.append("email", formData.email);
-      formBody.append("phone", formData.phone);
-      formBody.append("city", formData.city);
-      formBody.append("interest", formData.interest);
+      const data = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city,
+        interest: formData.interest,
+      };
 
-      await fetch(scriptUrl, {
+      const response = await fetch(scriptUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formBody.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
         mode: "no-cors",
       });
 
       setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", city: "", interest: "" });
     } catch {
       setSubmitted(true);
     } finally {
