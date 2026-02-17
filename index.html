@@ -1,29 +1,299 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>EveShield — Wearable Safety Technology for Kenya</title>
-    <meta name="description" content="EveShield is building wearable emergency response technology designed to help women and vulnerable individuals access immediate support in Kenya.">
-    <meta name="author" content="EveShield" />
-
+<!--
+  EveShield – Wearable Safety Technology for Kenya
+  Single-page site: HTML structure, styles.css, router + components + app (JS).
+  Open index.html in a browser or serve the folder with any local server.
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://eveshield.org/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="EveShield" />
+  <meta property="og:url" content="https://eveshield.org/" />
+  <title>EveShield — Non-Profit Safety Technology for GBV Survivors in Kenya</title>
+  <meta name="description" content="EveShield is a non-profit organization building an integrated safety ecosystem for survivors of gender-based violence and sexual assault in Kenya. Our GPS-enabled wearable device provides instant emergency response while connecting survivors to mental health support and legal advocacy for long-term healing and justice.">
+  <meta name="author" content="EveShield" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b8aecbef-db91-44af-a257-bdcd204c15f8/id-preview-9340bb79--5bd51e2e-04a7-4982-bce1-0211c2fea994.lovable.app-1771243042004.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@EveShield" />
+  <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b8aecbef-db91-44af-a257-bdcd204c15f8/id-preview-9340bb79--5bd51e2e-04a7-4982-bce1-0211c2fea994.lovable.app-1771243042004.png">
+  <meta property="og:title" content="EveShield — Non-Profit Safety Technology for GBV Survivors in Kenya">
+  <meta name="twitter:title" content="EveShield — Non-Profit Safety Technology for GBV Survivors in Kenya">
+  <meta property="og:description" content="EveShield is a non-profit organization building an integrated safety ecosystem for survivors of gender-based violence and sexual assault in Kenya. Our GPS-enabled wearable device provides instant emergency response while connecting survivors to mental health support and legal advocacy for long-term healing and justice.">
+  <meta name="twitter:description" content="EveShield is a non-profit organization building an integrated safety ecosystem for survivors of gender-based violence and sexual assault in Kenya. Our GPS-enabled wearable device provides instant emergency response while connecting survivors to mental health support and legal advocacy for long-term healing and justice.">
+  
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js loaded conditionally for data dashboard only -->
+  <script>
+    // Load Chart.js only when data dashboard is accessed
+    function loadChartJS() {
+      if (!document.getElementById('chartjs-script')) {
+        const script = document.createElement('script');
+        script.id = 'chartjs-script';
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    }
     
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b8aecbef-db91-44af-a257-bdcd204c15f8/id-preview-9340bb79--5bd51e2e-04a7-4982-bce1-0211c2fea994.lovable.app-1771243042004.png">
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b8aecbef-db91-44af-a257-bdcd204c15f8/id-preview-9340bb79--5bd51e2e-04a7-4982-bce1-0211c2fea994.lovable.app-1771243042004.png">
-    <meta property="og:title" content="EveShield — Wearable Safety Technology for Kenya">
-  <meta name="twitter:title" content="EveShield — Wearable Safety Technology for Kenya">
-  <meta property="og:description" content="EveShield is building wearable emergency response technology designed to help women and vulnerable individuals access immediate support in Kenya.">
-  <meta name="twitter:description" content="EveShield is building wearable emergency response technology designed to help women and vulnerable individuals access immediate support in Kenya.">
+    // Preload Chart.js when user navigates to data page
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a[data-path="/data"]');
+      if (link) {
+        loadChartJS();
+      }
+    });
+  </script>
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://eveshield.org/#organization",
+        "name": "EveShield",
+        "url": "https://eveshield.org/",
+        "logo": "https://eveshield.org/assets/eveshield-logo.png",
+        "description": "Non-profit organization building integrated safety ecosystem for survivors of gender-based violence and sexual assault in Kenya",
+        "sameAs": [
+          "https://www.instagram.com/eveshield/",
+          "https://www.facebook.com/profile.php?id=61586745593219",
+          "https://www.linkedin.com/company/eveshield/",
+          "https://x.com/eveshieldorg",
+          "https://www.tiktok.com/@eveshieldorg"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+254721606409",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Manga House, 9 Kiambere Rd",
+          "addressLocality": "Nairobi",
+          "addressRegion": "Nairobi",
+          "postalCode": "00100",
+          "addressCountry": "KE"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Kenya"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://eveshield.org/#localbusiness",
+        "name": "EveShield Kenya",
+        "description": "Non-profit safety technology organization providing emergency response and support services for GBV survivors",
+        "url": "https://eveshield.org/",
+        "telephone": "+254721606409",
+        "email": "eveshield2@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Manga House, 9 Kiambere Rd, UpperHill",
+          "addressLocality": "Nairobi",
+          "addressRegion": "Nairobi",
+          "postalCode": "00100",
+          "addressCountry": "KE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-1.2921",
+          "longitude": "36.8219"
+        },
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "priceRange": "$"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://eveshield.org/#website",
+        "url": "https://eveshield.org/",
+        "name": "EveShield",
+        "description": "Non-profit organization building integrated safety ecosystem for survivors of gender-based violence and sexual assault in Kenya",
+        "publisher": {
+          "@id": "https://eveshield.org/#organization"
+        },
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true
+      }
+    ]
+  }
+  </script>
 </head>
+<body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+  
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container-narrow">
+      <div class="navbar-content">
+        <a href="#/" class="navbar-logo" data-path="/">
+          <img src="assets/eveshield-logo.png" alt="EveShield" class="logo-img" loading="eager" />
+        </a>
+        
+        <!-- Desktop menu: same links as mobile, hidden on small screens -->
+        <div class="navbar-menu-desktop">
+          <a href="index.html" class="nav-link" data-path="/">Home</a>
+          <a href="#/who-we-are" class="nav-link" data-path="/who-we-are">About us</a>
+          <a href="#/data" class="nav-link" data-path="/data">Data Dashboard</a>
+          <a href="#/contact" class="nav-link" data-path="/contact">Contact</a>
+          <a href="#/contact" class="btn-primary btn-small">Join Early Access</a>
+        </div>
+        
+        <!-- Mobile Toggle -->
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+          <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg id="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile menu: shown when hamburger is clicked -->
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html" class="nav-link-mobile" data-path="/">Home</a>
+        <a href="#/who-we-are" class="nav-link-mobile" data-path="/who-we-are">About us</a>
+        <a href="#/data" class="nav-link-mobile" data-path="/data">Data Dashboard</a>
+        <a href="#/contact" class="nav-link-mobile" data-path="/contact">Contact</a>
+        <a href="#/contact" class="btn-primary btn-mobile">Join Early Access</a>
+      </div>
+    </div>
+  </nav>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Main Content -->
+  <main id="main-content" role="main" aria-label="Main content">
+    <!-- Content will be dynamically loaded here -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo" aria-label="Site information">
+    <div class="container-narrow">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="assets/eveshield-logo.png" alt="EveShield" class="footer-logo" loading="lazy" />
+          <p class="footer-description">
+            Building wearable emergency response technology for safety, dignity, and community.
+          </p>
+        </div>
+        
+        <!-- Footer nav: same as header for consistency -->
+        <div class="footer-section">
+          <h4 class="footer-title">Navigate</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link" data-path="/">Home</a>
+            <a href="#/who-we-are" class="footer-link" data-path="/who-we-are">About us</a>
+            <a href="#/data" class="footer-link" data-path="/data">Data Dashboard</a>
+            <a href="#/contact" class="footer-link" data-path="/contact">Contact</a>
+          </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-section">
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-contact">
+            <div class="flex items-center gap-2 mb-1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-foreground">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Manga House, 9 Kiambere Rd</span>
+            </div>
+            <div class="flex items-center gap-2 mb-1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-foreground">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              <span>UpperHill, Nairobi, Kenya</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-foreground">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <a href="mailto:eveshield2@gmail.com" class="contact-link">eveshield2@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social -->
+        <div class="footer-section">
+          <h4 class="footer-title">Follow Us</h4>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/eveshield/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <defs>
+                  <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#833AB4;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#E1306C;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#F77737;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#instagram-gradient)" stroke-width="2" fill="none"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="url(#instagram-gradient)"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#instagram-gradient)" stroke-width="2"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61586745593219" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/eveshield/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a href="https://x.com/eveshieldorg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@eveshieldorg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.91a8.27 8.27 0 0 0 4.76 1.51V7a4.84 4.84 0 0 1-1-.31z"/>
+              </svg>
+            </a>
+            <a href="https://chat.whatsapp.com/IGK8HRMceia4ReTvn4CMVe" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 0 0 .612.616l4.529-1.456A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.39-1.582l-.386-.236-2.687.864.882-2.634-.258-.404A9.935 9.935 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © <span id="current-year"></span> EveShield. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Order matters: router first, then components, then app (which uses both) -->
+  <script src="router.js"></script>
+  <script src="components.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
