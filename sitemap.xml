@@ -4,7 +4,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://eveshield.org/</loc>
-    <lastmod>2025-02-17</lastmod>
+    <lastmod>2025-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- About Page -->
   <url>
     <loc>https://eveshield.org/#/who-we-are</loc>
-    <lastmod>2025-02-17</lastmod>
+    <lastmod>2025-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,7 +20,7 @@
   <!-- Data Dashboard -->
   <url>
     <loc>https://eveshield.org/#/data</loc>
-    <lastmod>2025-02-17</lastmod>
+    <lastmod>2025-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -28,7 +28,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://eveshield.org/#/contact</loc>
-    <lastmod>2025-02-17</lastmod>
+    <lastmod>2025-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

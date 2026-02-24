@@ -26,8 +26,16 @@
   function getPathFromHash() {
     var hash = window.location.hash.slice(1);
     if (!hash || hash === '') return '/';
-    if (hash.charAt(0) !== '/') return '/' + hash;
-    return hash;
+    if (hash.charAt(0) !== '/') hash = '/' + hash;
+    
+    // Validate and sanitize path
+    var validPath = hash.replace(/[^a-zA-Z0-9\/\-_]/g, '');
+    if (validPath.length === 0) return '/';
+    
+    // Limit path length to prevent abuse
+    if (validPath.length > 100) return '/';
+    
+    return validPath;
   }
 
   /**

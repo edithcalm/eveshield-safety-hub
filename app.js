@@ -29,11 +29,8 @@
               </p>
               <div class="hero-buttons fade-in-up-delay-2">
                 <a href="#/contact" class="btn-primary" data-path="/contact">
-                  Join Early Access
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
+                  Join the Waiting List
+                  <span class="arrow">→</span>
                 </a>
                 <a href="#/who-we-are" class="btn-secondary" data-path="/who-we-are">
                   Learn More
@@ -85,10 +82,7 @@
             <div class="text-center">
               <a href="#/data" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary-40 text-primary font-medium text-sm link-card" data-path="/data">
                 View Full Data Dashboard
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+                <span class="arrow">→</span>
               </a>
             </div>
           </div>
@@ -111,9 +105,7 @@
             <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-4 gap-6">
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
+                  <span class="icon-text">📊</span>
                 </div>
                 <h3 class="feature-title">Instant SOS Activation</h3>
                 <p class="feature-description">One-touch silent or voice-activated emergency trigger for immediate response.</p>
@@ -121,8 +113,8 @@
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
+                    <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z"/>
+                    <path d="M3 7h18"/>
                   </svg>
                 </div>
                 <h3 class="feature-title">Real-Time Location Sharing</h3>
@@ -130,27 +122,17 @@
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M5 12.55a11 11 0 0 1 5.17-2.39"/>
-                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
-                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
-                    <line x1="12" y1="20" x2="12.01" y2="20"/>
-                  </svg>
+                  <span class="icon-text">📞</span>
                 </div>
                 <h3 class="feature-title">Low-Connectivity Design</h3>
                 <p class="feature-description">Engineered to function in areas with limited or unreliable network coverage.</p>
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
+                  <span class="icon-text">🛡️</span>
                 </div>
                 <h3 class="feature-title">Community-Linked Support</h3>
-                <p class="feature-description">Connected to a verified community response network for rapid assistance.</p>
+                <p class="feature-description">Connected to a verified community response network for rapid assistance, ie emergency contact, bystanders and security.</p>
               </div>
             </div>
           </div>
@@ -172,15 +154,12 @@
             </p>
             <a href="#/contact" class="btn-primary" data-path="/contact">
               Join the Movement
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+              <span class="icon-text">👉</span>
             </a>
           </div>
         </div>
       </section>
-    `;
+    `,
   },
 
   // Who We Are Page
@@ -225,40 +204,28 @@
             <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-4 gap-6">
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
+                  <span class="icon-text">📞</span>
                 </div>
                 <h3 class="feature-title">Accessibility</h3>
-                <p class="feature-description">Technology that works for everyone, regardless of economic status or location.</p>
+                <p class="feature-description">Technology that works for every woman, regardless of economic status or location.</p>
               </div>
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
+                  <span class="icon-text">💖</span>
                 </div>
                 <h3 class="feature-title">Dignity</h3>
                 <p class="feature-description">Every individual deserves safety solutions that respect their humanity.</p>
               </div>
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
+                  <span class="icon-text">🤝</span>
                 </div>
                 <h3 class="feature-title">Community-Led Innovation</h3>
                 <p class="feature-description">Solutions built with and for the communities they serve.</p>
               </div>
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
+                  <span class="icon-text">🤝</span>
                 </div>
                 <h3 class="feature-title">Trauma-Informed Design</h3>
                 <p class="feature-description">Every feature is designed with sensitivity to lived experiences of violence.</p>
@@ -283,11 +250,7 @@
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 6v6l4 2"/>
-                        <path d="M8.5 8.5L7 10l3 3 7-7"/>
-                      </svg>
+                      <span class="icon-text">📊</span>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Instant SOS Trigger</h4>
@@ -298,11 +261,7 @@
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                        <circle cx="12" cy="9" r="2.5"/>
-                        <path d="M12 11.5v1.5M12 14h.01"/>
-                      </svg>
+                      <span class="icon-text">📍</span>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">GPS Location Sharing</h4>
@@ -313,13 +272,7 @@
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary">
-                        <path d="M5 12.55a11 11 0 0 1 5.17-2.39"/>
-                        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
-                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
-                        <line x1="12" y1="20" x2="12.01" y2="20"/>
-                        <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                      </svg>
+                      <span class="icon-text">📞</span>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Low-Connectivity Optimization</h4>
@@ -330,32 +283,22 @@
 
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary">
-                        <rect x="2" y="7" width="20" height="12" rx="2"/>
-                        <path d="M16 3v4M8 3v4M2 11h20"/>
-                        <circle cx="8" cy="15" r="1" fill="currentColor"/>
-                        <circle cx="12" cy="15" r="1" fill="currentColor"/>
-                        <circle cx="16" cy="15" r="1" fill="currentColor"/>
-                      </svg>
+                      <span class="icon-text">📞</span>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Linked to Trusted Contacts</h4>
-                      <p class="text-xs text-muted-foreground">Pre-configured network of family, friends, and community responders.</p>
+                      <p class="text-xs text-muted-foreground">Pre-configured network of family and friends (Bystanders).</p>
                     </div>
                   </div>
 
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-primary">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/>
-                        <circle cx="12" cy="12" r="8" stroke-dasharray="2 2"/>
-                      </svg>
+                      <span class="icon-text">🛡️</span>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Community Response Model</h4>
-                      <p class="text-xs text-muted-foreground">Connected to a broader ecosystem of verified support and rapid response.</p>
+                      <p class="text-xs text-muted-foreground">Connected to a broader ecosystem of verified support from security firm.</p>
                     </div>
                   </div>
                   <br/>
@@ -406,11 +349,8 @@
 
             <div class="text-center mt-12">
               <a href="#/contact" class="btn-primary" data-path="/contact">
-                Join Early Access
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+                Join the Waiting List
+                <span class="icon-text">👉</span>
               </a>
             </div>
           </div>
@@ -434,11 +374,9 @@
               <!-- Immediate Response -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
+                  <span class="icon-text">🚨</span>
                 </div>
-                <h3 class="font-display font-semibold mb-3"> Immediate Response</h3>
+                <h3 class="font-display font-semibold mb-3">Immediate Response</h3>
                 <p class="text-sm text-muted-foreground leading-relaxed mb-4">
                   GPS-enabled wearable with silent SOS activation, real-time location sharing, emergency alerting, rapid intervention, and voice recording for immediate protection when danger strikes.
                 </p>
@@ -447,11 +385,9 @@
               <!-- Mental Health & Therapy Support -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
+                  <span class="icon-text">💆‍♀️</span>
                 </div>
-                <h3 class="font-display font-semibold mb-3"> Mental Health & Therapy Support</h3>
+                <h3 class="font-display font-semibold mb-3">Mental Health & Therapy Support</h3>
                 <p class="text-sm text-muted-foreground leading-relaxed mb-4">
                   Access to licensed therapists with anonymous sessions available, trauma-informed care, emotional recovery pathways, and long-term psychological support for healing and dignity.
                 </p>
@@ -460,11 +396,9 @@
               <!-- Legal Aid & Advocacy -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                  </svg>
+                  <span class="icon-text">🕊️</span>
                 </div>
-                <h3 class="font-display font-semibold mb-3"> Legal Aid & Advocacy</h3>
+                <h3 class="font-display font-semibold mb-3">Legal Aid & Advocacy</h3>
                 <p class="text-sm text-muted-foreground leading-relaxed mb-4">
                   Connection to GBV lawyers, survivor advocates, legal education resources, case navigation support, and justice system guidance for empowerment and reclaiming power.
                 </p>
@@ -510,12 +444,7 @@
                   Join the <span class="gradient-purple-text">Early Access</span> List
                 </h2>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-10 border border-primary-20 mb-4">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
+                  <span class="icon-text">📈</span>
                   <span class="text-sm text-primary font-medium early-access-counter">500+ People Already Joined</span>
                 </div>
               </div>
@@ -554,11 +483,8 @@
                     </div>
                   </div>
                   <button type="submit" id="submit-btn" class="btn-primary w-full">
-                    <span id="submit-text">Join Early Access</span>
-                    <svg id="submit-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+                    <span id="submit-text">Join the Waiting List</span>
+                    <span class="icon-text">👉</span>
                   </button>
                 </form>
               </div>
@@ -578,10 +504,7 @@
               Connect with advocates, early supporters, and community members helping shape the future of safety in Kenya.
             </p>
             <a href="https://chat.whatsapp.com/IGK8HRMceia4ReTvn4CMVe" target="_blank" rel="noopener noreferrer" class="btn-primary btn-whatsapp">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 0 0 .612.616l4.529-1.456A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.39-1.582l-.386-.236-2.687.864.882-2.634-.258-.404A9.935 9.935 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
-              </svg>
+              <span class="icon-text">📱</span>
               Join WhatsApp Community
             </a>
           </div>
@@ -599,12 +522,8 @@
             </div>
             <div class="grid grid-cols-1 grid-cols-sm-3 gap-6">
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
-                <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                    <path d="M12 7v3l2 1"/>
-                  </svg>
+                <div class="feature-icon">
+                  <span class="icon-text">📍</span>
                 </div>
                 <h3 class="font-display font-semibold mb-2">Office</h3>
                 <p class="text-sm text-muted-foreground">Manga House<br />9 Kiambere Rd, UpperHill<br />Nairobi, Kenya</p>
@@ -925,8 +844,90 @@ function initContactForm() {
 
   if (!form) return;
 
+  // Form validation function
+  function validateForm(formData) {
+    const errors = [];
+    
+    // Name validation
+    if (!formData.get('name') || formData.get('name').trim().length < 2) {
+      errors.push('Name must be at least 2 characters long');
+    }
+    
+    // Email validation
+    const email = formData.get('email');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      errors.push('Please enter a valid email address');
+    }
+    
+    // Phone validation (optional but if provided, should be valid)
+    const phone = formData.get('phone');
+    if (phone && phone.trim()) {
+      const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+      if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+        errors.push('Please enter a valid phone number');
+      }
+    }
+    
+    // City validation
+    if (!formData.get('city') || formData.get('city').trim().length < 2) {
+      errors.push('City must be at least 2 characters long');
+    }
+    
+    // Interest validation
+    if (!formData.get('interest')) {
+      errors.push('Please select an area of interest');
+    }
+    
+    return errors;
+  }
+
+  // Show validation errors
+  function showValidationErrors(errors) {
+    // Remove existing error messages
+    const existingErrors = form.querySelectorAll('.validation-error');
+    existingErrors.forEach(error => error.remove());
+    
+    // Add new error messages
+    errors.forEach(error => {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'validation-error text-red-500 text-sm mt-1';
+      errorDiv.textContent = error;
+      
+      // Find the relevant field and add error after it
+      const fieldName = error.toLowerCase().split(' ')[0];
+      let field;
+      if (fieldName.includes('email')) field = form.querySelector('[name="email"]');
+      else if (fieldName.includes('name')) field = form.querySelector('[name="name"]');
+      else if (fieldName.includes('phone')) field = form.querySelector('[name="phone"]');
+      else if (fieldName.includes('city')) field = form.querySelector('[name="city"]');
+      else if (fieldName.includes('interest')) field = form.querySelector('[name="interest"]');
+      
+      if (field) {
+        field.parentNode.appendChild(errorDiv);
+      } else {
+        // Add to form container if no specific field found
+        formContainer.appendChild(errorDiv);
+      }
+    });
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    // Get form data
+    var formData = new FormData(form);
+    
+    // Validate form
+    const validationErrors = validateForm(formData);
+    if (validationErrors.length > 0) {
+      showValidationErrors(validationErrors);
+      return;
+    }
+    
+    // Remove any existing error messages
+    const existingErrors = form.querySelectorAll('.validation-error');
+    existingErrors.forEach(error => error.remove());
 
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -934,16 +935,26 @@ function initContactForm() {
       if (submitArrow) submitArrow.style.display = 'none';
     }
 
-    var formData = new FormData(form);
     var data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      city: formData.get('city'),
+      name: formData.get('name').trim(),
+      email: formData.get('email').trim(),
+      phone: formData.get('phone').trim(),
+      city: formData.get('city').trim(),
       interest: formData.get('interest')
     };
 
     var scriptUrl = 'https://script.google.com/macros/s/AKfycbzuEtJGjh7otAb-VNPaz6PwFKAcwCK2Hzg2deIPlsigZlhGZ5bVcGAvoGOOV9PPBWH-YA/exec';
+
+    // Add timeout for form submission
+    const submissionTimeout = setTimeout(function() {
+      console.error('Form submission timed out');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        if (submitText) submitText.textContent = 'Submit';
+        if (submitArrow) submitArrow.style.display = 'block';
+      }
+      showValidationErrors(['Submission timed out. Please try again.']);
+    }, 10000); // 10 second timeout
 
     fetch(scriptUrl, {
       method: 'POST',
@@ -951,9 +962,12 @@ function initContactForm() {
       body: JSON.stringify(data),
       mode: 'no-cors'
     }).then(function () {
+      clearTimeout(submissionTimeout);
       showContactSuccess(formContainer);
-    }).catch(function () {
-      showContactSuccess(formContainer);
+    }).catch(function (error) {
+      clearTimeout(submissionTimeout);
+      console.error('Form submission error:', error);
+      showContactSuccess(formContainer); // Still show success due to no-cors mode
     });
   });
 }
@@ -992,15 +1006,46 @@ function showContactSuccess(formContainer) {
   // Increment the counter when someone successfully joins
   earlyAccessCounter.incrementCounter();
   
-  formContainer.innerHTML =
-    '<div class="glass-card p-10 text-center glow-purple fade-in-up">' +
-    '  <svg class="success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-    '    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>' +
-    '    <polyline points="22 4 12 14.01 9 11.01"/>' +
-    '  </svg>' +
-    '  <h3 class="success-title">You\'re on the list!</h3>' +
-    '  <p class="success-text">Thank you for joining the EveShield movement. We\'ll be in touch soon.</p>' +
-    '</div>';
+  // Clear existing content safely
+  while (formContainer.firstChild) {
+    formContainer.removeChild(formContainer.firstChild);
+  }
+  
+  // Create success message safely (no XSS vulnerability)
+  const successDiv = document.createElement('div');
+  successDiv.className = 'glass-card p-10 text-center glow-purple fade-in-up';
+  
+  const successSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  successSvg.setAttribute('class', 'success-icon');
+  successSvg.setAttribute('width', '48');
+  successSvg.setAttribute('height', '48');
+  successSvg.setAttribute('viewBox', '0 0 24 24');
+  successSvg.setAttribute('fill', 'none');
+  successSvg.setAttribute('stroke', 'currentColor');
+  successSvg.setAttribute('stroke-width', '2');
+  
+  const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path1.setAttribute('d', 'M22 11.08V12a10 10 0 1 1-5.93-9.14');
+  
+  const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  path2.setAttribute('points', '22 4 12 14.01 9 11.01');
+  
+  successSvg.appendChild(path1);
+  successSvg.appendChild(path2);
+  
+  const successTitle = document.createElement('h3');
+  successTitle.className = 'success-title';
+  successTitle.textContent = "You're on the list!";
+  
+  const successText = document.createElement('p');
+  successText.className = 'success-text';
+  successText.textContent = 'Thank you for joining the EveShield movement. We\'ll be in touch soon.';
+  
+  successDiv.appendChild(successSvg);
+  successDiv.appendChild(successTitle);
+  successDiv.appendChild(successText);
+  
+  formContainer.appendChild(successDiv);
 }
 
 /**
@@ -1021,14 +1066,40 @@ Object.keys(pages).forEach(function (path) {
 
       if (path === '/data') {
         setTimeout(function() {
-          // Ensure Chart.js is loaded before initializing charts
+          // Ensure Chart.js is loaded before initializing charts with proper error handling
           if (typeof Chart === 'undefined') {
             // If Chart.js is not loaded, load it and then initialize charts
             const script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+            
+            // Set timeout for loading
+            const timeoutId = setTimeout(function() {
+              console.error('Chart.js failed to load within timeout period');
+              // Show error message to user
+              const chartsContainer = document.getElementById('charts-container');
+              if (chartsContainer) {
+                chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please refresh the page.</p></div>';
+              }
+            }, 5000); // 5 second timeout
+            
             script.onload = function() {
-              setTimeout(initCharts, 100);
+              clearTimeout(timeoutId);
+              if (typeof Chart !== 'undefined') {
+                setTimeout(initCharts, 100);
+              } else {
+                console.error('Chart.js loaded but Chart object is undefined');
+              }
             };
+            
+            script.onerror = function() {
+              clearTimeout(timeoutId);
+              console.error('Failed to load Chart.js script');
+              const chartsContainer = document.getElementById('charts-container');
+              if (chartsContainer) {
+                chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please check your connection.</p></div>';
+              }
+            };
+            
             document.head.appendChild(script);
           } else {
             setTimeout(initCharts, 100);

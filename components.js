@@ -35,8 +35,11 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting && !self.isVisible) {
             self.isVisible = true;
-            self.observer.disconnect();
-            self.observer = null;
+            // Proper cleanup
+            if (self.observer) {
+              self.observer.disconnect();
+              self.observer = null;
+            }
             self.runAnimation();
           }
         });
@@ -57,11 +60,26 @@
       current += increment;
       if (current >= self.end) {
         current = self.end;
-        clearInterval(self.intervalId);
-        self.intervalId = null;
+        // Proper cleanup
+        if (self.intervalId) {
+          clearInterval(self.intervalId);
+          self.intervalId = null;
+        }
       }
       self.updateDisplay(Math.floor(current));
     }, step);
+  };
+
+  // Add cleanup method
+  AnimatedCounter.prototype.cleanup = function () {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   };
 
   AnimatedCounter.prototype.updateDisplay = function (value) {
@@ -111,17 +129,27 @@
       });
     }
 
-    // Mobile menu: toggle open/close and switch hamburger to X
-    var toggle = document.getElementById('mobile-menu-toggle');
-    var menu = document.getElementById('mobile-menu');
+    // Mobile menu toggle
+    var mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     var menuIcon = document.getElementById('menu-icon');
     var closeIcon = document.getElementById('close-icon');
+    var menuText = document.querySelector('.menu-text');
+    var closeText = document.querySelector('.close-text');
 
-    if (toggle && menu) {
-      toggle.addEventListener('click', function () {
-        var isOpen = menu.classList.toggle('open');
-        if (menuIcon) menuIcon.style.display = isOpen ? 'none' : 'block';
-        if (closeIcon) closeIcon.style.display = isOpen ? 'block' : 'none';
+    if (mobileMenuToggle && menuIcon && closeIcon && menuText && closeText) {
+      mobileMenuToggle.addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+          mobileMenu.classList.toggle('open');
+          menuIcon.style.display = 'none';
+          closeIcon.style.display = 'block';
+          menuText.style.display = 'none';
+        } else {
+          mobileMenu.classList.remove('open');
+          menuIcon.style.display = 'block';
+          closeIcon.style.display = 'none';
+          menuText.style.display = 'block';
+        }
       });
     }
 
