@@ -136,19 +136,18 @@
     var menuText = document.querySelector('.menu-text');
     var closeText = document.querySelector('.close-text');
 
-    if (mobileMenuToggle && menuIcon && closeIcon && menuText && closeText) {
+    if (mobileMenuToggle && menuText && closeText) {
       mobileMenuToggle.addEventListener('click', function () {
         var mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenu) {
-          mobileMenu.classList.toggle('open');
-          menuIcon.style.display = 'none';
-          closeIcon.style.display = 'block';
-          menuText.style.display = 'none';
-        } else {
-          mobileMenu.classList.remove('open');
-          menuIcon.style.display = 'block';
-          closeIcon.style.display = 'none';
-          menuText.style.display = 'block';
+          var isOpen = mobileMenu.classList.toggle('open');
+          if (isOpen) {
+            menuText.style.display = 'none';
+            closeText.style.display = 'block';
+          } else {
+            menuText.style.display = 'block';
+            closeText.style.display = 'none';
+          }
         }
       });
     }

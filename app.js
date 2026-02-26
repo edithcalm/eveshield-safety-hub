@@ -1,3 +1,27 @@
+// --- UI Enhancement: Scroll Progress Bar & Sticky Glass Navbar ---
+document.addEventListener('DOMContentLoaded', function () {
+  const navbar = document.getElementById('navbar');
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgressBar() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+  function handleNavbarGlass() {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', function () {
+    updateProgressBar();
+    handleNavbarGlass();
+  });
+  updateProgressBar();
+  handleNavbarGlass();
+});
 /**
  * APP.JS
  * ------
@@ -12,9 +36,9 @@
   var chartInstances = [];
 
   /** Page content: each key is a path, value is a function that returns the HTML for that page */
-  var pages = {
-    '/': function () {
-      return `
+var pages = {
+  '/': function () {
+    return `
       <!-- HERO -->
       <section class="gradient-hero hero-section">
         <div class="hero-glow"></div>
@@ -30,10 +54,15 @@
               <div class="hero-buttons fade-in-up-delay-2">
                 <a href="#/contact" class="btn-primary" data-path="/contact">
                   Join the Waiting List
-                  <span class="arrow">→</span>
+                  <svg class="icon icon-arrow-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
                 </a>
                 <a href="#/who-we-are" class="btn-secondary" data-path="/who-we-are">
                   Learn More
+                  <svg class="icon icon-arrow-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -105,7 +134,10 @@
             <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-4 gap-6">
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
-                  <span class="icon-text">📊</span>
+                  <!-- example using Heroicons solid chart-bar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5h2v-3a1 1 0 011-1h2a1 1 0 011 1v3h2v-7a1 1 0 011-1h2a1 1 0 011 1v9h-14v-7z"/>
+                  </svg>
                 </div>
                 <h3 class="feature-title">Instant SOS Activation</h3>
                 <p class="feature-description">One-touch silent or voice-activated emergency trigger for immediate response.</p>
@@ -122,14 +154,14 @@
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
-                  <span class="icon-text">📞</span>
+                  <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
                 <h3 class="feature-title">Low-Connectivity Design</h3>
                 <p class="feature-description">Engineered to function in areas with limited or unreliable network coverage.</p>
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
                 <div class="feature-icon">
-                  <span class="icon-text">🛡️</span>
+                  <svg class="lucide lucide-shield w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h3 class="feature-title">Community-Linked Support</h3>
                 <p class="feature-description">Connected to a verified community response network for rapid assistance, ie emergency contact, bystanders and security.</p>
@@ -154,16 +186,16 @@
             </p>
             <a href="#/contact" class="btn-primary" data-path="/contact">
               Join the Movement
-              <span class="icon-text">👉</span>
+              <svg class="lucide lucide-arrow-right w-5 h-5 ml-2 inline-flex" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
       </section>
-    `,
+    `;
   },
 
   // Who We Are Page
-  '/who-we-are': () => {
+  '/who-we-are': function () {
     return `
       <!-- HERO -->
       <section class="gradient-hero page-header">
@@ -204,28 +236,28 @@
             <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-4 gap-6">
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <span class="icon-text">📞</span>
+                  <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
                 <h3 class="feature-title">Accessibility</h3>
                 <p class="feature-description">Technology that works for every woman, regardless of economic status or location.</p>
               </div>
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <span class="icon-text">💖</span>
+                  <svg class="lucide lucide-heart w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                 </div>
                 <h3 class="feature-title">Dignity</h3>
                 <p class="feature-description">Every individual deserves safety solutions that respect their humanity.</p>
               </div>
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <span class="icon-text">🤝</span>
+                  <svg class="lucide lucide-users w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <h3 class="feature-title">Community-Led Innovation</h3>
                 <p class="feature-description">Solutions built with and for the communities they serve.</p>
               </div>
               <div class="glass-card feature-card p-6 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto">
-                  <span class="icon-text">🤝</span>
+                  <svg class="lucide lucide-users w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <h3 class="feature-title">Trauma-Informed Design</h3>
                 <p class="feature-description">Every feature is designed with sensitivity to lived experiences of violence.</p>
@@ -250,7 +282,7 @@
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span class="icon-text">📊</span>
+                      <svg class="lucide lucide-bar-chart w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Instant SOS Trigger</h4>
@@ -261,7 +293,7 @@
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span class="icon-text">📍</span>
+                      <svg class="lucide lucide-map-pin w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">GPS Location Sharing</h4>
@@ -272,7 +304,7 @@
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span class="icon-text">📞</span>
+                      <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Low-Connectivity Optimization</h4>
@@ -283,7 +315,7 @@
 
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span class="icon-text">📞</span>
+                      <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Linked to Trusted Contacts</h4>
@@ -294,7 +326,7 @@
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
                     <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span class="icon-text">🛡️</span>
+                      <svg class="lucide lucide-shield w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <div>
                       <h4 class="font-medium text-sm">Community Response Model</h4>
@@ -350,7 +382,7 @@
             <div class="text-center mt-12">
               <a href="#/contact" class="btn-primary" data-path="/contact">
                 Join the Waiting List
-                <span class="icon-text">👉</span>
+                <svg class="lucide lucide-arrow-right w-5 h-5 ml-2 inline-flex" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
           </div>
@@ -374,7 +406,7 @@
               <!-- Immediate Response -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
-                  <span class="icon-text">🚨</span>
+                  <svg class="lucide lucide-alert-triangle w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
                 </div>
                 <h3 class="font-display font-semibold mb-3">Immediate Response</h3>
                 <p class="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -385,7 +417,7 @@
               <!-- Mental Health & Therapy Support -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
-                  <span class="icon-text">💆‍♀️</span>
+                  <svg class="lucide lucide-activity w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                 </div>
                 <h3 class="font-display font-semibold mb-3">Mental Health & Therapy Support</h3>
                 <p class="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -396,7 +428,7 @@
               <!-- Legal Aid & Advocacy -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
-                  <span class="icon-text">🕊️</span>
+                  <svg class="lucide lucide-heart-handshake w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/></svg>
                 </div>
                 <h3 class="font-display font-semibold mb-3">Legal Aid & Advocacy</h3>
                 <p class="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -444,7 +476,7 @@
                   Join the <span class="gradient-purple-text">Early Access</span> List
                 </h2>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-10 border border-primary-20 mb-4">
-                  <span class="icon-text">📈</span>
+                  <svg class="lucide lucide-trending-up w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
                   <span class="text-sm text-primary font-medium early-access-counter">500+ People Already Joined</span>
                 </div>
               </div>
@@ -484,7 +516,7 @@
                   </div>
                   <button type="submit" id="submit-btn" class="btn-primary w-full">
                     <span id="submit-text">Join the Waiting List</span>
-                    <span class="icon-text">👉</span>
+                    <svg class="lucide lucide-arrow-right w-5 h-5 ml-2 inline-flex" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </button>
                 </form>
               </div>
@@ -504,7 +536,7 @@
               Connect with advocates, early supporters, and community members helping shape the future of safety in Kenya.
             </p>
             <a href="https://chat.whatsapp.com/IGK8HRMceia4ReTvn4CMVe" target="_blank" rel="noopener noreferrer" class="btn-primary btn-whatsapp">
-              <span class="icon-text">📱</span>
+              <svg class="lucide lucide-smartphone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
               Join WhatsApp Community
             </a>
           </div>
@@ -522,18 +554,15 @@
             </div>
             <div class="grid grid-cols-1 grid-cols-sm-3 gap-6">
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
-                <div class="feature-icon">
-                  <span class="icon-text">📍</span>
+                <div class="feature-icon mx-auto mb-4">
+                  <svg class="lucide lucide-map-pin w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <h3 class="font-display font-semibold mb-2">Office</h3>
                 <p class="text-sm text-muted-foreground">Manga House<br />9 Kiambere Rd, UpperHill<br />Nairobi, Kenya</p>
               </div>
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
-                <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    <path d="M14 2l4 4-4 4M6 10h12"/>
-                  </svg>
+                <div class="feature-icon mx-auto mb-4">
+                  <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
                 <h3 class="font-display font-semibold mb-2">Phone</h3>
                 <p class="text-sm text-muted-foreground">
@@ -542,12 +571,8 @@
                 </p>
               </div>
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
-                <div class="feature-icon mx-auto">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                    <path d="M7 9l10 0M7 12l6 0"/>
-                  </svg>
+                <div class="feature-icon mx-auto mb-4">
+                  <svg class="lucide lucide-mail w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
                 <h3 class="font-display font-semibold mb-2">Email</h3>
                 <p class="text-sm text-muted-foreground">
@@ -719,6 +744,11 @@
     `;
   }
 };
+
+/**
+ * Create bar and doughnut charts on the Data page.
+ * Destroys any existing Chart instances first so we don't get duplicates when navigating back.
+ */
 
 /**
  * Create bar and doughnut charts on the Data page.
@@ -950,8 +980,7 @@ function initContactForm() {
       console.error('Form submission timed out');
       if (submitBtn) {
         submitBtn.disabled = false;
-        if (submitText) submitText.textContent = 'Submit';
-        if (submitArrow) submitArrow.style.display = 'block';
+        if (submitText) submitText.textContent = 'Join the Waiting List';
       }
       showValidationErrors(['Submission timed out. Please try again.']);
     }, 10000); // 10 second timeout
@@ -1054,89 +1083,85 @@ function showContactSuccess(formContainer) {
  * and page-specific logic (charts, form).
  */
 Object.keys(pages).forEach(function (path) {
-  window.router.register(path, function () {
-    var mainContent = document.getElementById('main-content');
-    if (!mainContent) return;
+  // Capture path in a closure to avoid variable reference issues
+  (function(currentPath) {
+    window.router.register(currentPath, function () {
+      var mainContent = document.getElementById('main-content');
+      if (!mainContent) return;
 
-    mainContent.innerHTML = pages[path]();
+      mainContent.innerHTML = pages[currentPath]();
 
-    // After a short delay so the DOM is updated, run components and page logic
-    setTimeout(function () {
-      window.initComponents();
+      // After a short delay so the DOM is updated, run components and page logic
+      setTimeout(function () {
+        window.initComponents();
 
-      if (path === '/data') {
-        setTimeout(function() {
-          // Ensure Chart.js is loaded before initializing charts with proper error handling
-          if (typeof Chart === 'undefined') {
-            // If Chart.js is not loaded, load it and then initialize charts
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
-            
-            // Set timeout for loading
-            const timeoutId = setTimeout(function() {
-              console.error('Chart.js failed to load within timeout period');
-              // Show error message to user
-              const chartsContainer = document.getElementById('charts-container');
-              if (chartsContainer) {
-                chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please refresh the page.</p></div>';
-              }
-            }, 5000); // 5 second timeout
-            
-            script.onload = function() {
-              clearTimeout(timeoutId);
-              if (typeof Chart !== 'undefined') {
-                setTimeout(initCharts, 100);
-              } else {
-                console.error('Chart.js loaded but Chart object is undefined');
-              }
-            };
-            
-            script.onerror = function() {
-              clearTimeout(timeoutId);
-              console.error('Failed to load Chart.js script');
-              const chartsContainer = document.getElementById('charts-container');
-              if (chartsContainer) {
-                chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please check your connection.</p></div>';
-              }
-            };
-            
-            document.head.appendChild(script);
-          } else {
-            setTimeout(initCharts, 100);
-          }
-        }, 100);
-      }
-      if (path === '/contact') {
-        initContactForm();
-      }
-    }, 50);
-  });
+        if (currentPath === '/data') {
+          setTimeout(function() {
+            // Ensure Chart.js is loaded before initializing charts with proper error handling
+            if (typeof Chart === 'undefined') {
+              // If Chart.js is not loaded, load it and then initialize charts
+              const script = document.createElement('script');
+              script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+              
+              // Set timeout for loading
+              const timeoutId = setTimeout(function() {
+                console.error('Chart.js failed to load within timeout period');
+                // Show error message to user
+                const chartsContainer = document.getElementById('charts-container');
+                if (chartsContainer) {
+                  chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please refresh the page.</p></div>';
+                }
+              }, 5000); // 5 second timeout
+              
+              script.onload = function() {
+                clearTimeout(timeoutId);
+                if (typeof Chart !== 'undefined') {
+                  setTimeout(initCharts, 100);
+                } else {
+                  console.error('Chart.js loaded but Chart object is undefined');
+                }
+              };
+              
+              script.onerror = function() {
+                clearTimeout(timeoutId);
+                console.error('Failed to load Chart.js script');
+                const chartsContainer = document.getElementById('charts-container');
+                if (chartsContainer) {
+                  chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please check your connection.</p></div>';
+                }
+              };
+              
+              document.head.appendChild(script);
+            } else {
+              setTimeout(initCharts, 100);
+            }
+          }, 100);
+        }
+        if (currentPath === '/contact') {
+          initContactForm();
+        }
+      }, 50);
+    });
+  })(path);  // IIFE to capture path value
 });
+
+// Trigger initial navigation immediately after routes are registered
+function initializeApp() {
+  var hash = window.location.hash.slice(1) || '';
+  var path = hash.charAt(0) === '/' ? hash : (hash ? '/' + hash : '/');
+  
+  window.router.navigate(path || '/', false);
+  window.initComponents();
+  earlyAccessCounter.updateDisplay();
+}
 
 /**
  * On first load: run components and, if we landed on Contact or Data, run their logic.
  * Use the URL hash (not pathname) so it works when opening index.html as a file.
  */
 document.addEventListener('DOMContentLoaded', function () {
-  window.initComponents();
-
-  var hash = window.location.hash.slice(1) || '';
-  var path = hash.charAt(0) === '/' ? hash : (hash ? '/' + hash : '/');
-
-  // Ensure the home page loads when visiting index.html directly
-  if (!hash) {
-    window.router.navigate('/', false);
-  }
-
-  // Initialize the early access counter display
-  earlyAccessCounter.updateDisplay();
-
-  if (path === '/contact') {
-    setTimeout(initContactForm, 100);
-  }
-  if (path === '/data') {
-    setTimeout(initCharts, 200);
-  }
+  // Initialize app when DOM is fully ready
+  initializeApp();
 });
 
 })();

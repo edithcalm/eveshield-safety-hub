@@ -69,8 +69,8 @@
       }
     });
 
-    // Load the page for the current URL
-    this.navigate(this.currentPath, false);
+    // Don't navigate immediately here - wait for routes to be registered
+    // Initial navigation will be triggered by app.js after routes are registered
   };
 
   /**
@@ -118,8 +118,10 @@
     var closeIcon = document.getElementById('close-icon');
     if (mobileMenu) {
       mobileMenu.classList.remove('open');
-      if (menuIcon) menuIcon.style.display = 'block';
-      if (closeIcon) closeIcon.style.display = 'none';
+      var menuText = document.querySelector('.menu-text');
+      var closeText = document.querySelector('.close-text');
+      if (menuText) menuText.style.display = 'block';
+      if (closeText) closeText.style.display = 'none';
     }
 
     // Scroll to top
