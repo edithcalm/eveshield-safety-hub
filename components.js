@@ -131,24 +131,17 @@
 
     // Mobile menu toggle
     var mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    var menuIcon = document.getElementById('menu-icon');
-    var closeIcon = document.getElementById('close-icon');
     var menuText = document.querySelector('.menu-text');
     var closeText = document.querySelector('.close-text');
 
-    if (mobileMenuToggle && menuIcon && closeIcon && menuText && closeText) {
+    if (mobileMenuToggle && menuText && closeText) {
       mobileMenuToggle.addEventListener('click', function () {
         var mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenu) {
-          mobileMenu.classList.toggle('open');
-          menuIcon.style.display = 'none';
-          closeIcon.style.display = 'block';
-          menuText.style.display = 'none';
-        } else {
-          mobileMenu.classList.remove('open');
-          menuIcon.style.display = 'block';
-          closeIcon.style.display = 'none';
-          menuText.style.display = 'block';
+          var isOpen = mobileMenu.classList.toggle('open');
+          menuText.style.display = isOpen ? 'none' : 'inline';
+          closeText.style.display = isOpen ? 'inline' : 'none';
+          mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
       });
     }

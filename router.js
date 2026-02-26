@@ -114,12 +114,14 @@
 
     // Close mobile menu when changing page
     var mobileMenu = document.getElementById('mobile-menu');
-    var menuIcon = document.getElementById('menu-icon');
-    var closeIcon = document.getElementById('close-icon');
+    var mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    var menuText = document.querySelector('.menu-text');
+    var closeText = document.querySelector('.close-text');
     if (mobileMenu) {
       mobileMenu.classList.remove('open');
-      if (menuIcon) menuIcon.style.display = 'block';
-      if (closeIcon) closeIcon.style.display = 'none';
+      if (menuText) menuText.style.display = 'inline';
+      if (closeText) closeText.style.display = 'none';
+      if (mobileMenuToggle) mobileMenuToggle.setAttribute('aria-expanded', 'false');
     }
 
     // Scroll to top

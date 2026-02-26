@@ -159,7 +159,7 @@
           </div>
         </div>
       </section>
-    `,
+    `;
   },
 
   // Who We Are Page
@@ -1069,7 +1069,18 @@ Object.keys(pages).forEach(function (path) {
           // Ensure Chart.js is loaded before initializing charts with proper error handling
           if (typeof Chart === 'undefined') {
             // If Chart.js is not loaded, load it and then initialize charts
+            const existingScript = document.getElementById('chartjs-script');
+            if (existingScript) {
+              existingScript.addEventListener('load', function () {
+                if (typeof Chart !== 'undefined') {
+                  setTimeout(initCharts, 100);
+                }
+              }, { once: true });
+              return;
+            }
+
             const script = document.createElement('script');
+            script.id = 'chartjs-script';
             script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
             
             // Set timeout for loading
