@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var chartInstances = [];
 
   /** Page content: each key is a path, value is a function that returns the HTML for that page */
-var pages = {
-  '/': function () {
-    return `
+  var pages = {
+    '/': function () {
+      return `
       <!-- HERO -->
       <section class="gradient-hero hero-section">
         <div class="hero-glow"></div>
@@ -51,14 +51,14 @@ var pages = {
               <p class="hero-description fade-in-up-delay-1">
                 EveShield is a non-profit organization building an integrated safety ecosystem for survivors of gender-based violence and sexual assault. Our GPS-enabled wearable device enables instant emergency response, while our platform connects survivors to mental health professionals and legal advocates for long-term recovery and justice.
               </p>
-              <div class="hero-buttons fade-in-up-delay-2">
-                <a href="#/contact" class="btn-primary" data-path="/contact">
+              <div class="hero-buttons fade-in-up-delay-2 flex flex-col sm:flex-row gap-4">
+                <a href="#/contact" class="btn btn-modern-waitlist btn-lg w-full sm:w-auto" data-path="/contact">
                   Join the Waiting List
                   <svg class="icon icon-arrow-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
-                <a href="#/who-we-are" class="btn-secondary" data-path="/who-we-are">
+                <a href="#/who-we-are" class="btn btn-secondary btn-lg w-full sm:w-auto" data-path="/who-we-are">
                   Learn More
                   <svg class="icon icon-arrow-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -79,7 +79,7 @@ var pages = {
       <section class="gradient-section section-padding">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="text-center mb-12 mb-sm-16">
+            <div class="text-center mb-8 mb-sm-12">
               <h2 class="text-3xl text-sm-4xl text-lg-5xl font-display font-bold mb-4">
                 The Reality in <span class="gradient-purple-text">Kenya</span>
               </h2>
@@ -109,7 +109,7 @@ var pages = {
             </div>
 
             <div class="text-center">
-              <a href="#/data" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary-40 text-primary font-medium text-sm link-card" data-path="/data">
+              <a href="#/data" class="btn btn-secondary btn-sm" data-path="/data">
                 View Full Data Dashboard
                 <span class="arrow">→</span>
               </a>
@@ -122,7 +122,7 @@ var pages = {
       <section class="section-padding bg-background">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="text-center mb-12 mb-sm-16">
+            <div class="text-center mb-8 mb-sm-12">
               <h2 class="text-3xl text-sm-4xl text-lg-5xl font-display font-bold mb-4">
                 A Wearable Safety <span class="gradient-purple-text">Ecosystem</span>
               </h2>
@@ -133,36 +133,22 @@ var pages = {
 
             <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-4 gap-6">
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
-                <div class="feature-icon">
-                  <!-- example using Heroicons solid chart-bar -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5h2v-3a1 1 0 011-1h2a1 1 0 011 1v3h2v-7a1 1 0 011-1h2a1 1 0 011 1v9h-14v-7z"/>
-                  </svg>
-                </div>
+
                 <h3 class="feature-title">Instant SOS Activation</h3>
                 <p class="feature-description">One-touch silent or voice-activated emergency trigger for immediate response.</p>
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
-                <div class="feature-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                    <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z"/>
-                    <path d="M3 7h18"/>
-                  </svg>
-                </div>
+
                 <h3 class="feature-title">Real-Time Location Sharing</h3>
                 <p class="feature-description">GPS-enabled location sharing with trusted contacts during emergencies.</p>
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
-                <div class="feature-icon">
-                  <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </div>
+
                 <h3 class="feature-title">Low-Connectivity Design</h3>
                 <p class="feature-description">Engineered to function in areas with limited or unreliable network coverage.</p>
               </div>
               <div class="glass-card feature-card p-6 p-sm-8 glow-purple-hover">
-                <div class="feature-icon">
-                  <svg class="lucide lucide-shield w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
+
                 <h3 class="feature-title">Community-Linked Support</h3>
                 <p class="feature-description">Connected to a verified community response network for rapid assistance, ie emergency contact, bystanders and security.</p>
               </div>
@@ -184,7 +170,7 @@ var pages = {
             <p class="text-lg text-sm-xl text-foreground max-w-2xl mx-auto leading-relaxed mb-10 font-medium">
               We are building technology that turns vulnerability into agency.
             </p>
-            <a href="#/contact" class="btn-primary" data-path="/contact">
+            <a href="#/contact" class="btn btn-primary btn-lg" data-path="/contact">
               Join the Movement
               <svg class="lucide lucide-arrow-right w-5 h-5 ml-2 inline-flex" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -192,11 +178,11 @@ var pages = {
         </div>
       </section>
     `;
-  },
+    },
 
-  // Who We Are Page
-  '/who-we-are': function () {
-    return `
+    // Who We Are Page
+    '/who-we-are': function () {
+      return `
       <!-- HERO -->
       <section class="gradient-hero page-header">
         <div class="container-narrow text-center">
@@ -213,7 +199,7 @@ var pages = {
       <section class="section-padding bg-background">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="grid grid-cols-1 grid-cols-md-2 gap-6 mb-16">
+            <div class="grid grid-cols-1 grid-cols-md-2 gap-6 mb-10">
               <div class="glass-card p-8 p-sm-10">
                 <h3 class="text-xs uppercase tracking-wider text-primary mb-4 font-semibold">Our Vision</h3>
                 <p class="text-lg text-sm-xl font-display font-medium leading-relaxed">
@@ -230,7 +216,7 @@ var pages = {
 
             <br/>
             <!-- Values -->
-            <div class="text-center mb-12">
+            <div class="text-center mb-8">
               <h2 class="text-3xl text-sm-4xl font-display font-bold mb-4">Core <span class="gradient-purple-text">Values</span></h2>
             </div>
             <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-4 gap-6">
@@ -271,7 +257,7 @@ var pages = {
       <section class="section-padding gradient-section">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="grid grid-cols-1 grid-cols-lg-2 gap-12 gap-lg-16 items-center mb-16">
+            <div class="grid grid-cols-1 grid-cols-lg-2 gap-10 gap-lg-12 items-center mb-10">
               <div>
                 <h2 class="text-3xl text-sm-4xl text-lg-5xl font-display font-bold mb-6">
                   The EveShield <span class="gradient-purple-text">Safety Bracelet</span>
@@ -281,7 +267,7 @@ var pages = {
                 </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
-                    <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="lucide lucide-bar-chart w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
                     </div>
                     <div>
@@ -292,7 +278,7 @@ var pages = {
 
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
-                    <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="lucide lucide-map-pin w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <div>
@@ -303,7 +289,7 @@ var pages = {
 
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
-                    <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div>
@@ -314,7 +300,7 @@ var pages = {
                   <br/>
 
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
-                    <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="lucide lucide-phone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div>
@@ -325,7 +311,7 @@ var pages = {
 
                   <br/>
                   <div class="flex items-start gap-3 p-3 rounded-xl hover-bg-secondary-50 transition-colors">
-                    <div class="w-8 h-8 rounded-lg bg-primary-15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div class="w-8 h-8 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="lucide lucide-shield w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <div>
@@ -350,7 +336,7 @@ var pages = {
       <section class="section-padding bg-background">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="text-center mb-12 mb-sm-16">
+            <div class="text-center mb-8 mb-sm-12">
               <h2 class="text-3xl text-sm-4xl text-lg-5xl font-display font-bold mb-4">
                 How It <span class="gradient-purple-text">Works</span>
               </h2>
@@ -380,7 +366,7 @@ var pages = {
             </div>
 
             <div class="text-center mt-12">
-              <a href="#/contact" class="btn-primary" data-path="/contact">
+              <a href="#/contact" class="btn btn-modern-waitlist btn-lg" data-path="/contact">
                 Join the Waiting List
                 <svg class="lucide lucide-arrow-right w-5 h-5 ml-2 inline-flex" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -393,7 +379,7 @@ var pages = {
       <section class="section-padding gradient-section">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="text-center mb-12 mb-sm-16">
+            <div class="text-center mb-8 mb-sm-12">
               <h2 class="text-3xl text-sm-4xl text-lg-5xl font-display font-bold mb-4">
                 Our Ecosystem: From <span class="gradient-purple-text">Crisis to Recovery</span>
               </h2>
@@ -402,7 +388,7 @@ var pages = {
               </p>
             </div>
 
-            <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-3 gap-6 mb-16">
+            <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-3 gap-6 mb-10">
               <!-- Immediate Response -->
               <div class="glass-card p-6 p-sm-8 text-center glow-purple-hover">
                 <div class="feature-icon mx-auto mb-4">
@@ -449,11 +435,11 @@ var pages = {
         </div>
       </section>
     `;
-  },
+    },
 
-  // Contact Page
-  '/contact': () => {
-    return `
+    // Contact Page
+    '/contact': () => {
+      return `
       <!-- HEADER -->
       <section class="gradient-hero page-header">
         <div class="container-narrow text-center">
@@ -475,9 +461,16 @@ var pages = {
                 <h2 class="text-3xl text-sm-4xl font-display font-bold mb-4">
                   Join the <span class="gradient-purple-text">Early Access</span> List
                 </h2>
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-10 border border-primary-20 mb-4">
-                  <svg class="lucide lucide-trending-up w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                  <span class="text-sm text-primary font-medium early-access-counter">500+ People Already Joined</span>
+                <div class="live-tally-container">
+                  <div class="live-tally-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                      <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="live-tally-text">
+                    <span class="live-tally-number"><span class="early-access-counter-number">508</span> People</span> Already Joined
+                  </div>
                 </div>
               </div>
 
@@ -514,7 +507,7 @@ var pages = {
                       </select>
                     </div>
                   </div>
-                  <button type="submit" id="submit-btn" class="btn-primary w-full">
+                  <button type="submit" id="submit-btn" class="btn btn-modern-waitlist btn-lg w-full">
                     <span id="submit-text">Join the Waiting List</span>
                     <svg class="lucide lucide-arrow-right w-5 h-5 ml-2 inline-flex" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </button>
@@ -535,8 +528,8 @@ var pages = {
             <p class="text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               Connect with advocates, early supporters, and community members helping shape the future of safety in Kenya.
             </p>
-            <a href="https://chat.whatsapp.com/IGK8HRMceia4ReTvn4CMVe" target="_blank" rel="noopener noreferrer" class="btn-primary btn-whatsapp">
-              <svg class="lucide lucide-smartphone w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            <a href="https://chat.whatsapp.com/IGK8HRMceia4ReTvn4CMVe" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+              <svg class="w-6 h-6 mx-auto text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 2.17.69 4.18 1.87 5.81L2.4 22l4.31-1.42A9.97 9.97 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.23c-1.74 0-3.41-.45-4.88-1.28l-.35-.2-3.62 1.2 1.22-3.53-.22-.35A8.2 8.2 0 0 1 3.77 12c0-4.54 3.7-8.23 8.23-8.23 4.54 0 8.23 3.7 8.23 8.23 0 4.54-3.7 8.23-8.23 8.23zm4.52-5.94c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.55.12-.17.25-.64.81-.79.97-.15.17-.3.19-.55.06-1.55-.78-2.65-1.7-3.66-3.45-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.75-1.82-.2-.48-.41-.42-.55-.42h-.47c-.17 0-.45.06-.68.31-.23.25-.89.87-.89 2.12s.91 2.45 1.04 2.62c.12.17 1.79 2.73 4.33 3.82.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z" clip-rule="evenodd" /></svg>
               Join WhatsApp Community
             </a>
           </div>
@@ -547,7 +540,7 @@ var pages = {
       <section class="section-padding bg-background">
         <div class="section-wrapper">
           <div class="container-narrow">
-            <div class="text-center mb-12">
+            <div class="text-center mb-8">
               <h2 class="text-3xl text-sm-4xl font-display font-bold mb-4">
                 Get in <span class="gradient-purple-text">Touch</span>
               </h2>
@@ -584,11 +577,11 @@ var pages = {
         </div>
       </section>
     `;
-  },
+    },
 
-  // Data Dashboard Page
-  '/data': () => {
-    return `
+    // Data Dashboard Page
+    '/data': () => {
+      return `
       <!-- HEADER -->
       <section class="gradient-hero page-header">
         <div class="container-narrow text-center">
@@ -717,7 +710,7 @@ var pages = {
               <h3 class="text-xl text-sm-2xl font-display font-bold mb-4">
                 Data Shows the Problem. <span class="gradient-purple-text">Technology Can Help Build the Response.</span>
               </h3>
-              <a href="#/contact" class="btn-primary mt-4" data-path="/contact">
+              <a href="#/contact" class="btn btn-primary btn-lg mt-4" data-path="/contact">
                 Join the Early Access Movement
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -729,11 +722,11 @@ var pages = {
         </div>
       </section>
     `;
-  },
+    },
 
-  // 404 Page
-  '*': () => {
-    return `
+    // 404 Page
+    '*': () => {
+      return `
       <div class="not-found">
         <div class="not-found-content">
           <h1 class="not-found-title">404</h1>
@@ -742,426 +735,429 @@ var pages = {
         </div>
       </div>
     `;
-  }
-};
+    }
+  };
 
-/**
- * Create bar and doughnut charts on the Data page.
- * Destroys any existing Chart instances first so we don't get duplicates when navigating back.
- */
+  /**
+   * Create bar and doughnut charts on the Data page.
+   * Destroys any existing Chart instances first so we don't get duplicates when navigating back.
+   */
 
-/**
- * Create bar and doughnut charts on the Data page.
- * Destroys any existing Chart instances first so we don't get duplicates when navigating back.
- */
-function initCharts() {
-  var i;
-  // Destroy previous charts so we don't stack them when user revisits /data
-  for (i = 0; i < chartInstances.length; i++) {
-    chartInstances[i].destroy();
-  }
-  chartInstances.length = 0;
+  /**
+   * Create bar and doughnut charts on the Data page.
+   * Destroys any existing Chart instances first so we don't get duplicates when navigating back.
+   */
+  function initCharts() {
+    var i;
+    // Destroy previous charts so we don't stack them when user revisits /data
+    for (i = 0; i < chartInstances.length; i++) {
+      chartInstances[i].destroy();
+    }
+    chartInstances.length = 0;
 
-  // Bar chart: violence by type
-  var barCtx = document.getElementById('barChart');
-  if (barCtx) {
-    chartInstances.push(new Chart(barCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Physical', 'Sexual', 'Emotional'],
-        datasets: [{
-          data: [34, 13, 28],
-          backgroundColor: [
-            'hsl(270, 70%, 50%)',
-            'hsl(270, 80%, 65%)',
-            'hsl(260, 10%, 40%)'
-          ],
-          borderRadius: 8
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'hsl(0, 0%, 100%)',
-            borderColor: 'hsl(0, 0%, 90%)',
-            titleColor: 'hsl(0, 0%, 9%)',
-            bodyColor: 'hsl(0, 0%, 9%)',
-            borderWidth: 1,
-            borderRadius: 12,
-            padding: 12,
-            callbacks: {
-              label: function(context) {
-                return context.parsed.x + '%';
-              }
-            }
-          }
+    // Bar chart: violence by type
+    var barCtx = document.getElementById('barChart');
+    if (barCtx) {
+      chartInstances.push(new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Physical', 'Sexual', 'Emotional'],
+          datasets: [{
+            data: [34, 13, 28],
+            backgroundColor: [
+              'hsl(270, 70%, 50%)',
+              'hsl(270, 80%, 65%)',
+              'hsl(260, 10%, 40%)'
+            ],
+            borderRadius: 8
+          }]
         },
-        scales: {
-          x: {
-            max: 40,
-            ticks: {
-              color: 'hsl(0, 0%, 35%)',
-              font: { size: 12 }
-            },
-            grid: { display: false }
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'hsl(0, 0%, 100%)',
+              borderColor: 'hsl(0, 0%, 90%)',
+              titleColor: 'hsl(0, 0%, 9%)',
+              bodyColor: 'hsl(0, 0%, 9%)',
+              borderWidth: 1,
+              borderRadius: 12,
+              padding: 12,
+              callbacks: {
+                label: function (context) {
+                  return context.parsed.x + '%';
+                }
+              }
+            }
           },
-          y: {
-            ticks: {
-              color: 'hsl(0, 0%, 25%)',
-              font: { size: 13 }
+          scales: {
+            x: {
+              max: 40,
+              ticks: {
+                color: 'hsl(0, 0%, 35%)',
+                font: { size: 12 }
+              },
+              grid: { display: false }
             },
-            grid: { display: false }
+            y: {
+              ticks: {
+                color: 'hsl(0, 0%, 25%)',
+                font: { size: 13 }
+              },
+              grid: { display: false }
+            }
           }
         }
-      }
-    }));
-  }
+      }));
+    }
 
-  // Doughnut chart: GBV cases by gender
-  var pieCtx = document.getElementById('pieChart');
-  if (pieCtx) {
-    chartInstances.push(new Chart(pieCtx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Women', 'Men'],
-        datasets: [{
-          data: [90, 10],
-          backgroundColor: [
-            'hsl(270, 70%, 50%)',
-            'hsl(260, 10%, 30%)'
-          ],
-          borderWidth: 0
-        }]
-      },
-      options: {
-        cutout: '60%',
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            backgroundColor: 'hsl(0, 0%, 100%)',
-            borderColor: 'hsl(0, 0%, 90%)',
-            titleColor: 'hsl(0, 0%, 9%)',
-            bodyColor: 'hsl(0, 0%, 9%)',
-            borderWidth: 1,
-            borderRadius: 12,
-            padding: 12,
-            callbacks: {
-              label: function(context) {
-                return context.label + ': ' + context.parsed + '%';
+    // Doughnut chart: GBV cases by gender
+    var pieCtx = document.getElementById('pieChart');
+    if (pieCtx) {
+      chartInstances.push(new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Women', 'Men'],
+          datasets: [{
+            data: [90, 10],
+            backgroundColor: [
+              'hsl(270, 70%, 50%)',
+              'hsl(260, 10%, 30%)'
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          cutout: '60%',
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              backgroundColor: 'hsl(0, 0%, 100%)',
+              borderColor: 'hsl(0, 0%, 90%)',
+              titleColor: 'hsl(0, 0%, 9%)',
+              bodyColor: 'hsl(0, 0%, 9%)',
+              borderWidth: 1,
+              borderRadius: 12,
+              padding: 12,
+              callbacks: {
+                label: function (context) {
+                  return context.label + ': ' + context.parsed + '%';
+                }
               }
             }
           }
         }
-      }
-    }));
-  }
-}
-
-/**
- * Contact form: submit to Google Apps Script and show a thank-you message.
- * Runs when the Contact page is loaded (form is in the DOM).
- */
-function initContactForm() {
-  var form = document.getElementById('contact-form');
-  var formContainer = document.getElementById('form-container');
-  var submitBtn = document.getElementById('submit-btn');
-  var submitText = document.getElementById('submit-text');
-  var submitArrow = document.getElementById('submit-arrow');
-
-  if (!form) return;
-
-  // Form validation function
-  function validateForm(formData) {
-    const errors = [];
-    
-    // Name validation
-    if (!formData.get('name') || formData.get('name').trim().length < 2) {
-      errors.push('Name must be at least 2 characters long');
+      }));
     }
-    
-    // Email validation
-    const email = formData.get('email');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-      errors.push('Please enter a valid email address');
-    }
-    
-    // Phone validation (optional but if provided, should be valid)
-    const phone = formData.get('phone');
-    if (phone && phone.trim()) {
-      const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-      if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
-        errors.push('Please enter a valid phone number');
-      }
-    }
-    
-    // City validation
-    if (!formData.get('city') || formData.get('city').trim().length < 2) {
-      errors.push('City must be at least 2 characters long');
-    }
-    
-    // Interest validation
-    if (!formData.get('interest')) {
-      errors.push('Please select an area of interest');
-    }
-    
-    return errors;
   }
 
-  // Show validation errors
-  function showValidationErrors(errors) {
-    // Remove existing error messages
-    const existingErrors = form.querySelectorAll('.validation-error');
-    existingErrors.forEach(error => error.remove());
-    
-    // Add new error messages
-    errors.forEach(error => {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'validation-error text-red-500 text-sm mt-1';
-      errorDiv.textContent = error;
-      
-      // Find the relevant field and add error after it
-      const fieldName = error.toLowerCase().split(' ')[0];
-      let field;
-      if (fieldName.includes('email')) field = form.querySelector('[name="email"]');
-      else if (fieldName.includes('name')) field = form.querySelector('[name="name"]');
-      else if (fieldName.includes('phone')) field = form.querySelector('[name="phone"]');
-      else if (fieldName.includes('city')) field = form.querySelector('[name="city"]');
-      else if (fieldName.includes('interest')) field = form.querySelector('[name="interest"]');
-      
-      if (field) {
-        field.parentNode.appendChild(errorDiv);
-      } else {
-        // Add to form container if no specific field found
-        formContainer.appendChild(errorDiv);
+  /**
+   * Contact form: submit to Google Apps Script and show a thank-you message.
+   * Runs when the Contact page is loaded (form is in the DOM).
+   */
+  function initContactForm() {
+    var form = document.getElementById('contact-form');
+    var formContainer = document.getElementById('form-container');
+    var submitBtn = document.getElementById('submit-btn');
+    var submitText = document.getElementById('submit-text');
+    var submitArrow = document.getElementById('submit-arrow');
+
+    if (!form) return;
+
+    // Form validation function
+    function validateForm(formData) {
+      const errors = [];
+
+      // Name validation
+      if (!formData.get('name') || formData.get('name').trim().length < 2) {
+        errors.push('Name must be at least 2 characters long');
       }
-    });
-  }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+      // Email validation
+      const email = formData.get('email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        errors.push('Please enter a valid email address');
+      }
 
-    // Get form data
-    var formData = new FormData(form);
-    
-    // Validate form
-    const validationErrors = validateForm(formData);
-    if (validationErrors.length > 0) {
-      showValidationErrors(validationErrors);
-      return;
+      // Phone validation (optional but if provided, should be valid)
+      const phone = formData.get('phone');
+      if (phone && phone.trim()) {
+        const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+        if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+          errors.push('Please enter a valid phone number');
+        }
+      }
+
+      // City validation
+      if (!formData.get('city') || formData.get('city').trim().length < 2) {
+        errors.push('City must be at least 2 characters long');
+      }
+
+      // Interest validation
+      if (!formData.get('interest')) {
+        errors.push('Please select an area of interest');
+      }
+
+      return errors;
     }
-    
-    // Remove any existing error messages
-    const existingErrors = form.querySelectorAll('.validation-error');
-    existingErrors.forEach(error => error.remove());
 
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      if (submitText) submitText.textContent = 'Submitting...';
-      if (submitArrow) submitArrow.style.display = 'none';
+    // Show validation errors
+    function showValidationErrors(errors) {
+      // Remove existing error messages
+      const existingErrors = form.querySelectorAll('.validation-error');
+      existingErrors.forEach(error => error.remove());
+
+      // Add new error messages
+      errors.forEach(error => {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'validation-error text-red-500 text-sm mt-1';
+        errorDiv.textContent = error;
+
+        // Find the relevant field and add error after it
+        const fieldName = error.toLowerCase().split(' ')[0];
+        let field;
+        if (fieldName.includes('email')) field = form.querySelector('[name="email"]');
+        else if (fieldName.includes('name')) field = form.querySelector('[name="name"]');
+        else if (fieldName.includes('phone')) field = form.querySelector('[name="phone"]');
+        else if (fieldName.includes('city')) field = form.querySelector('[name="city"]');
+        else if (fieldName.includes('interest')) field = form.querySelector('[name="interest"]');
+
+        if (field) {
+          field.parentNode.appendChild(errorDiv);
+        } else {
+          // Add to form container if no specific field found
+          formContainer.appendChild(errorDiv);
+        }
+      });
     }
 
-    var data = {
-      name: formData.get('name').trim(),
-      email: formData.get('email').trim(),
-      phone: formData.get('phone').trim(),
-      city: formData.get('city').trim(),
-      interest: formData.get('interest')
-    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    var scriptUrl = 'https://script.google.com/macros/s/AKfycbzuEtJGjh7otAb-VNPaz6PwFKAcwCK2Hzg2deIPlsigZlhGZ5bVcGAvoGOOV9PPBWH-YA/exec';
+      // Get form data
+      var formData = new FormData(form);
 
-    // Add timeout for form submission
-    const submissionTimeout = setTimeout(function() {
-      console.error('Form submission timed out');
+      // Validate form
+      const validationErrors = validateForm(formData);
+      if (validationErrors.length > 0) {
+        showValidationErrors(validationErrors);
+        return;
+      }
+
+      // Remove any existing error messages
+      const existingErrors = form.querySelectorAll('.validation-error');
+      existingErrors.forEach(error => error.remove());
+
       if (submitBtn) {
-        submitBtn.disabled = false;
-        if (submitText) submitText.textContent = 'Join the Waiting List';
+        submitBtn.disabled = true;
+        if (submitText) submitText.textContent = 'Submitting...';
+        if (submitArrow) submitArrow.style.display = 'none';
       }
-      showValidationErrors(['Submission timed out. Please try again.']);
-    }, 10000); // 10 second timeout
 
-    fetch(scriptUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      mode: 'no-cors'
-    }).then(function () {
-      clearTimeout(submissionTimeout);
-      showContactSuccess(formContainer);
-    }).catch(function (error) {
-      clearTimeout(submissionTimeout);
-      console.error('Form submission error:', error);
-      showContactSuccess(formContainer); // Still show success due to no-cors mode
+      var data = {
+        name: formData.get('name').trim(),
+        email: formData.get('email').trim(),
+        phone: formData.get('phone').trim(),
+        city: formData.get('city').trim(),
+        interest: formData.get('interest')
+      };
+
+      var scriptUrl = 'https://script.google.com/macros/s/AKfycbzuEtJGjh7otAb-VNPaz6PwFKAcwCK2Hzg2deIPlsigZlhGZ5bVcGAvoGOOV9PPBWH-YA/exec';
+
+      // Add timeout for form submission
+      const submissionTimeout = setTimeout(function () {
+        console.error('Form submission timed out');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (submitText) submitText.textContent = 'Join the Waiting List';
+        }
+        showValidationErrors(['Submission timed out. Please try again.']);
+      }, 10000); // 10 second timeout
+
+      fetch(scriptUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        mode: 'no-cors'
+      }).then(function () {
+        clearTimeout(submissionTimeout);
+        showContactSuccess(formContainer);
+      }).catch(function (error) {
+        clearTimeout(submissionTimeout);
+        console.error('Form submission error:', error);
+        showContactSuccess(formContainer); // Still show success due to no-cors mode
+      });
     });
+  }
+
+  /**
+   * Live counter system for early access signups
+   */
+  var earlyAccessCounter = {
+    // Get current count from localStorage or default to 505
+    getCurrentCount: function () {
+      return parseInt(localStorage.getItem('eveshield_early_access_count') || '505');
+    },
+
+    // Update counter display
+    updateDisplay: function () {
+      var count = this.getCurrentCount();
+      var counterElements = document.querySelectorAll('.early-access-counter-number');
+      counterElements.forEach(function (element) {
+        element.textContent = count;
+      });
+    },
+
+    // Increment counter when someone joins
+    incrementCounter: function () {
+      var currentCount = this.getCurrentCount();
+      var newCount = currentCount + 1;
+      localStorage.setItem('eveshield_early_access_count', newCount.toString());
+      this.updateDisplay();
+    }
+  };
+
+  /** Show the "You're on the list!" message after form submit (used on success or no-cors error). */
+  function showContactSuccess(formContainer) {
+    if (!formContainer) return;
+
+    // Increment the counter when someone successfully joins
+    earlyAccessCounter.incrementCounter();
+
+    // Clear existing content safely
+    while (formContainer.firstChild) {
+      formContainer.removeChild(formContainer.firstChild);
+    }
+
+    // Create success message safely (no XSS vulnerability)
+    const successDiv = document.createElement('div');
+    successDiv.className = 'glass-card p-10 text-center glow-purple fade-in-up';
+
+    const successSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    successSvg.setAttribute('class', 'success-icon');
+    successSvg.setAttribute('width', '48');
+    successSvg.setAttribute('height', '48');
+    successSvg.setAttribute('viewBox', '0 0 24 24');
+    successSvg.setAttribute('fill', 'none');
+    successSvg.setAttribute('stroke', 'currentColor');
+    successSvg.setAttribute('stroke-width', '2');
+
+    const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path1.setAttribute('d', 'M22 11.08V12a10 10 0 1 1-5.93-9.14');
+
+    const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    path2.setAttribute('points', '22 4 12 14.01 9 11.01');
+
+    successSvg.appendChild(path1);
+    successSvg.appendChild(path2);
+
+    const successTitle = document.createElement('h3');
+    successTitle.className = 'success-title';
+    successTitle.textContent = "You're on the list!";
+
+    const successText = document.createElement('p');
+    successText.className = 'success-text';
+    successText.textContent = 'Thank you for joining the EveShield movement. We\'ll be in touch soon.';
+
+    successDiv.appendChild(successSvg);
+    successDiv.appendChild(successTitle);
+    successDiv.appendChild(successText);
+
+    formContainer.appendChild(successDiv);
+  }
+
+  /**
+   * Register each path with the router. When the user navigates to a path,
+   * we inject the page HTML and then run components (counters, sections)
+   * and page-specific logic (charts, form).
+   */
+  Object.keys(pages).forEach(function (path) {
+    // Capture path in a closure to avoid variable reference issues
+    (function (currentPath) {
+      window.router.register(currentPath, function () {
+        var mainContent = document.getElementById('main-content');
+        if (!mainContent) return;
+
+        mainContent.innerHTML = pages[currentPath]();
+
+        // After a short delay so the DOM is updated, run components and page logic
+        setTimeout(function () {
+          window.initComponents();
+
+          if (currentPath === '/data') {
+            setTimeout(function () {
+              // Ensure Chart.js is loaded before initializing charts with proper error handling
+              if (typeof Chart === 'undefined') {
+                // If Chart.js is not loaded, load it and then initialize charts
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+
+                // Set timeout for loading
+                const timeoutId = setTimeout(function () {
+                  console.error('Chart.js failed to load within timeout period');
+                  // Show error message to user
+                  const chartsContainer = document.getElementById('charts-container');
+                  if (chartsContainer) {
+                    chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please refresh the page.</p></div>';
+                  }
+                }, 5000); // 5 second timeout
+
+                script.onload = function () {
+                  clearTimeout(timeoutId);
+                  if (typeof Chart !== 'undefined') {
+                    setTimeout(initCharts, 100);
+                  } else {
+                    console.error('Chart.js loaded but Chart object is undefined');
+                  }
+                };
+
+                script.onerror = function () {
+                  clearTimeout(timeoutId);
+                  console.error('Failed to load Chart.js script');
+                  const chartsContainer = document.getElementById('charts-container');
+                  if (chartsContainer) {
+                    chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please check your connection.</p></div>';
+                  }
+                };
+
+                document.head.appendChild(script);
+              } else {
+                setTimeout(initCharts, 100);
+              }
+            }, 100);
+          }
+          if (currentPath === '/contact') {
+            initContactForm();
+          }
+
+          // Force update counter on every page navigation (especially for pages with counter)
+          earlyAccessCounter.updateDisplay();
+        }, 50);
+      });
+    })(path);  // IIFE to capture path value
   });
-}
 
-/**
- * Live counter system for early access signups
- */
-var earlyAccessCounter = {
-  // Get current count from localStorage or default to 502
-  getCurrentCount: function() {
-    return parseInt(localStorage.getItem('eveshield_early_access_count') || '502');
-  },
-  
-  // Update counter display
-  updateDisplay: function() {
-    var count = this.getCurrentCount();
-    var counterElements = document.querySelectorAll('.early-access-counter');
-    counterElements.forEach(function(element) {
-      element.textContent = count + '+ People Already Joined';
-    });
-  },
-  
-  // Increment counter when someone joins
-  incrementCounter: function() {
-    var currentCount = this.getCurrentCount();
-    var newCount = currentCount + 1;
-    localStorage.setItem('eveshield_early_access_count', newCount.toString());
-    this.updateDisplay();
+  // Trigger initial navigation immediately after routes are registered
+  function initializeApp() {
+    var hash = window.location.hash.slice(1) || '';
+    var path = hash.charAt(0) === '/' ? hash : (hash ? '/' + hash : '/');
+
+    window.router.navigate(path || '/', false);
+    window.initComponents();
+    earlyAccessCounter.updateDisplay();
   }
-};
 
-/** Show the "You're on the list!" message after form submit (used on success or no-cors error). */
-function showContactSuccess(formContainer) {
-  if (!formContainer) return;
-  
-  // Increment the counter when someone successfully joins
-  earlyAccessCounter.incrementCounter();
-  
-  // Clear existing content safely
-  while (formContainer.firstChild) {
-    formContainer.removeChild(formContainer.firstChild);
-  }
-  
-  // Create success message safely (no XSS vulnerability)
-  const successDiv = document.createElement('div');
-  successDiv.className = 'glass-card p-10 text-center glow-purple fade-in-up';
-  
-  const successSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  successSvg.setAttribute('class', 'success-icon');
-  successSvg.setAttribute('width', '48');
-  successSvg.setAttribute('height', '48');
-  successSvg.setAttribute('viewBox', '0 0 24 24');
-  successSvg.setAttribute('fill', 'none');
-  successSvg.setAttribute('stroke', 'currentColor');
-  successSvg.setAttribute('stroke-width', '2');
-  
-  const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path1.setAttribute('d', 'M22 11.08V12a10 10 0 1 1-5.93-9.14');
-  
-  const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-  path2.setAttribute('points', '22 4 12 14.01 9 11.01');
-  
-  successSvg.appendChild(path1);
-  successSvg.appendChild(path2);
-  
-  const successTitle = document.createElement('h3');
-  successTitle.className = 'success-title';
-  successTitle.textContent = "You're on the list!";
-  
-  const successText = document.createElement('p');
-  successText.className = 'success-text';
-  successText.textContent = 'Thank you for joining the EveShield movement. We\'ll be in touch soon.';
-  
-  successDiv.appendChild(successSvg);
-  successDiv.appendChild(successTitle);
-  successDiv.appendChild(successText);
-  
-  formContainer.appendChild(successDiv);
-}
-
-/**
- * Register each path with the router. When the user navigates to a path,
- * we inject the page HTML and then run components (counters, sections)
- * and page-specific logic (charts, form).
- */
-Object.keys(pages).forEach(function (path) {
-  // Capture path in a closure to avoid variable reference issues
-  (function(currentPath) {
-    window.router.register(currentPath, function () {
-      var mainContent = document.getElementById('main-content');
-      if (!mainContent) return;
-
-      mainContent.innerHTML = pages[currentPath]();
-
-      // After a short delay so the DOM is updated, run components and page logic
-      setTimeout(function () {
-        window.initComponents();
-
-        if (currentPath === '/data') {
-          setTimeout(function() {
-            // Ensure Chart.js is loaded before initializing charts with proper error handling
-            if (typeof Chart === 'undefined') {
-              // If Chart.js is not loaded, load it and then initialize charts
-              const script = document.createElement('script');
-              script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
-              
-              // Set timeout for loading
-              const timeoutId = setTimeout(function() {
-                console.error('Chart.js failed to load within timeout period');
-                // Show error message to user
-                const chartsContainer = document.getElementById('charts-container');
-                if (chartsContainer) {
-                  chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please refresh the page.</p></div>';
-                }
-              }, 5000); // 5 second timeout
-              
-              script.onload = function() {
-                clearTimeout(timeoutId);
-                if (typeof Chart !== 'undefined') {
-                  setTimeout(initCharts, 100);
-                } else {
-                  console.error('Chart.js loaded but Chart object is undefined');
-                }
-              };
-              
-              script.onerror = function() {
-                clearTimeout(timeoutId);
-                console.error('Failed to load Chart.js script');
-                const chartsContainer = document.getElementById('charts-container');
-                if (chartsContainer) {
-                  chartsContainer.innerHTML = '<div class="glass-card p-6 text-center"><p class="text-muted-foreground">Charts could not be loaded. Please check your connection.</p></div>';
-                }
-              };
-              
-              document.head.appendChild(script);
-            } else {
-              setTimeout(initCharts, 100);
-            }
-          }, 100);
-        }
-        if (currentPath === '/contact') {
-          initContactForm();
-        }
-      }, 50);
-    });
-  })(path);  // IIFE to capture path value
-});
-
-// Trigger initial navigation immediately after routes are registered
-function initializeApp() {
-  var hash = window.location.hash.slice(1) || '';
-  var path = hash.charAt(0) === '/' ? hash : (hash ? '/' + hash : '/');
-  
-  window.router.navigate(path || '/', false);
-  window.initComponents();
-  earlyAccessCounter.updateDisplay();
-}
-
-/**
- * On first load: run components and, if we landed on Contact or Data, run their logic.
- * Use the URL hash (not pathname) so it works when opening index.html as a file.
- */
-document.addEventListener('DOMContentLoaded', function () {
-  // Initialize app when DOM is fully ready
-  initializeApp();
-});
+  /**
+   * On first load: run components and, if we landed on Contact or Data, run their logic.
+   * Use the URL hash (not pathname) so it works when opening index.html as a file.
+   */
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize app when DOM is fully ready
+    initializeApp();
+  });
 
 })();
