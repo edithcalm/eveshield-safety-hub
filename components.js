@@ -131,23 +131,19 @@
 
     // Mobile menu toggle
     var mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    var menuIcon = document.getElementById('menu-icon');
-    var closeIcon = document.getElementById('close-icon');
-    var menuText = document.querySelector('.menu-text');
-    var closeText = document.querySelector('.close-text');
+    var mobileMenu = document.getElementById('mobile-menu');
 
-    if (mobileMenuToggle && menuText && closeText) {
+    if (mobileMenuToggle && mobileMenu) {
       mobileMenuToggle.addEventListener('click', function () {
-        var mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-          var isOpen = mobileMenu.classList.toggle('open');
-          if (isOpen) {
-            menuText.style.display = 'none';
-            closeText.style.display = 'block';
-          } else {
-            menuText.style.display = 'block';
-            closeText.style.display = 'none';
-          }
+        mobileMenu.classList.toggle('open');
+        mobileMenuToggle.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          mobileMenu.classList.remove('open');
+          mobileMenuToggle.classList.remove('active');
         }
       });
     }
