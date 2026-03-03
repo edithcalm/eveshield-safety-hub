@@ -963,10 +963,12 @@ document.addEventListener('DOMContentLoaded', function () {
         email: formData.get('email').trim(),
         phone: formData.get('phone').trim(),
         city: formData.get('city').trim(),
-        interest: formData.get('interest')
+        interest: formData.get('interest'),
+        timestamp: new Date().toISOString(),
+        source: 'EveShield Website'
       };
 
-      var scriptUrl = 'https://script.google.com/macros/s/AKfycbzuEtJGjh7otAb-VNPaz6PwFKAcwCK2Hzg2deIPlsigZlhGZ5bVcGAvoGOOV9PPBWH-YA/exec';
+      var scriptUrl = 'https://script.google.com/macros/s/AKfycby9NnUgDmKaqIxLk3fEoJS3VyW9ysq10gSBzSxUiabj4BjyOG4T8pIp2J9bZAPn9n92IQ/exec';
 
       // Add timeout for form submission
       const submissionTimeout = setTimeout(function () {
@@ -976,38 +978,115 @@ document.addEventListener('DOMContentLoaded', function () {
           if (submitText) submitText.textContent = 'Join the Waiting List';
         }
         showValidationErrors(['Submission timed out. Please try again.']);
-      }, 10000); // 10 second timeout
+      }, 15000); // 15 second timeout
+
+      console.log('Submitting to Google Apps Script:', scriptUrl);
+      console.log('Form data:', data);
 
       fetch(scriptUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
         mode: 'no-cors'
-      }).then(function () {
+      }).then(function (response) {
         clearTimeout(submissionTimeout);
+        console.log('Form submitted successfully');
         showContactSuccess(formContainer);
       }).catch(function (error) {
         clearTimeout(submissionTimeout);
         console.error('Form submission error:', error);
-        showContactSuccess(formContainer); // Still show success due to no-cors mode
+        // Still show success due to no-cors mode limitations
+        showContactSuccess(formContainer);
       });
     });
   }
 
   /**
-   * Live counter system for early access signups
+   * Real-time counter system for early access signups
+   * Uses intelligent caching and server synchronization
    */
   var earlyAccessCounter = {
-    // Get current count from localStorage or default to 505
+    // Base count from Google Spreadsheet (you can update this manually)
+    baseCount: 505,
+    
+    // Get current count with intelligent caching
     getCurrentCount: function () {
-      return parseInt(localStorage.getItem('eveshield_early_access_count') || '505');
+      var cachedCount = localStorage.getItem('eveshield_early_access_count');
+      var cacheTime = localStorage.getItem('eveshield_early_access_count_time');
+      var currentCount = this.baseCount;
+      
+      // If we have a cached count that's recent (less than 1 hour old), use it
+      if (cachedCount && cacheTime && (Date.now() - parseInt(cacheTime)) < 3600000) {
+        currentCount = parseInt(cachedCount);
+      } else {
+        // Otherwise, try to get a fresh count from server
+        this.fetchRealCount();
+      }
+      
+      return currentCount;
     },
 
-    // Update counter display
+    // Fetch real count from server (using a simple GET request)
+    fetchRealCount: function () {
+      var self = this;
+      
+      // Create a unique callback for this request
+      var callbackName = 'eveshield_counter_' + Date.now();
+      var scriptUrl = 'https://script.google.com/macros/s/AKfycby9NnUgDmKaqIxLk3fEoJS3VyW9ysq10gSBzSxUiabj4BjyOG4T8pIp2J9bZAPn9n92IQ/exec?action=getCount&callback=' + callbackName;
+      
+      // Create global callback function
+      window[callbackName] = function(data) {
+        if (data && typeof data.count === 'number') {
+          // Update cache with server count
+          localStorage.setItem('eveshield_early_access_count', data.count.toString());
+          localStorage.setItem('eveshield_early_access_count_time', Date.now().toString());
+          self.baseCount = data.count;
+          self.updateDisplay();
+        }
+        // Clean up
+        delete window[callbackName];
+      };
+      
+      // Create and append script tag
+      var script = document.createElement('script');
+      script.src = scriptUrl;
+      script.onerror = function() {
+        console.log('Counter fetch failed, using cached value');
+        delete window[callbackName];
+      };
+      script.onload = function() {
+        // Clean up after a delay in case callback doesn't fire
+        setTimeout(function() {
+          if (window[callbackName]) {
+            delete window[callbackName];
+          }
+        }, 5000);
+      };
+      
+      document.head.appendChild(script);
+    },
+
+    // Update counter display across all elements
     updateDisplay: function () {
       var count = this.getCurrentCount();
+      
+      // Update number-based counters
       var counterElements = document.querySelectorAll('.early-access-counter-number');
       counterElements.forEach(function (element) {
+        element.textContent = count;
+      });
+      
+      // Update text-based counters
+      var textCounters = document.querySelectorAll('.early-access-counter');
+      textCounters.forEach(function (element) {
+        if (element.textContent.includes('People Already Joined')) {
+          element.innerHTML = '<span class="icon-text">📈</span><span class="text-sm text-primary font-medium">' + count + '+ People Already Joined</span>';
+        }
+      });
+      
+      // Update any other counter elements
+      var allCounters = document.querySelectorAll('[data-counter]');
+      allCounters.forEach(function (element) {
         element.textContent = count;
       });
     },
@@ -1016,8 +1095,42 @@ document.addEventListener('DOMContentLoaded', function () {
     incrementCounter: function () {
       var currentCount = this.getCurrentCount();
       var newCount = currentCount + 1;
+      
+      // Update local cache immediately
       localStorage.setItem('eveshield_early_access_count', newCount.toString());
+      localStorage.setItem('eveshield_early_access_count_time', Date.now().toString());
+      this.baseCount = newCount;
+      
+      // Update display
       this.updateDisplay();
+      
+      // Try to sync with server after a short delay
+      setTimeout(() => {
+        this.fetchRealCount();
+      }, 3000);
+    },
+
+    // Initialize counter system
+    init: function () {
+      console.log('Initializing real-time counter system');
+      
+      // Update display immediately
+      this.updateDisplay();
+      
+      // Fetch fresh count from server
+      this.fetchRealCount();
+      
+      // Refresh count every 5 minutes to stay current
+      setInterval(() => {
+        this.fetchRealCount();
+      }, 300000);
+      
+      // Also refresh when page becomes visible again (user returns to tab)
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          this.fetchRealCount();
+        }
+      });
     }
   };
 
@@ -1148,7 +1261,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.router.navigate(path || '/', false);
     window.initComponents();
-    earlyAccessCounter.updateDisplay();
+    
+    // Initialize the real-time counter system
+    earlyAccessCounter.init();
   }
 
   /**
